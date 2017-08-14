@@ -131,7 +131,7 @@ $(document).ready(function () {
 function exportar(jei) {
     console.log(jei);
 
-    var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify()); //preparo la data para ser adjuntada al link de exportación
+    var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(jei)); //preparo la data para ser adjuntada al link de exportación
     $('.exportar').attr('href', 'data:' + data);
     //var slug = string_to_slug(title); //convierto el titulo de la partirura a slug para que el archivo contenga ese nombre
     $('.exportar').attr('download', 'pix-data-cuentos.json'); // indico el nombre con el cual se descargará el archivo
