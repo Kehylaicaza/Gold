@@ -24,6 +24,7 @@ $(document).ready(function () {
             console.log("hola soy un cuento" + arrayCuentos);
             if (value.imagenes.length != null) {
                 $("#principal").append('<li><a id=' + a.toString() + '><div class="col-lg-4"><img class="imagenesCuentos"  src=' + value.imagenes[0].src + '>' + value.titulo + '</div></a></li>');
+                  
                 a++;
             }
 
@@ -87,6 +88,7 @@ $(document).ready(function () {
 
             $(".col-lg-10").empty(); //elimina todos los nodos que tenga
             $(".col-lg-10").append('<img   alt=" " class="img-responsive" src="' + arrayCuentos[v].imagenes[controladorImagenes].src + '  ">');
+             $("#au").append('<source src="'+value.audios[0].src+ '" type="audio/wma"></source>');
 
         } else {
             controladorImagenes = controladorImagenes - 1;
