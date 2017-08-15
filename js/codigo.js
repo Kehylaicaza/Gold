@@ -4,20 +4,24 @@ var id = 0;
 var cuentos = [];
 var cuentosIm = [];
 var cuentosAu = [];
-var global;
+var ImPreguntas= [];
+var ImPreguntas2= [];
+var ArrPreg=[];
+
 var idCuento = 5;
 //esto es para que aparezcan en la pagina Verhistorias como predeterminadas
 
 function leer() {
     var usuarios2 = [];
     $.getJSON('../php/datos.json', function (data) {
-        global=data;
         $.each(data, function (i, emp) {
+            console.log("xcxd"+emp);
             var user= new Usuario(emp);
             
             usuarios2.push(user);
         });
     });  
+    alert("aqui probando"+usuarios2);
     return usuarios2;
 
 };
@@ -26,16 +30,21 @@ function leer() {
 class Usuario{
    
     constructor(obj){
+        console.log("ardtfyyghv"+obj.nombre);
         this.nombre=obj.nombre;
         this.usuario=obj.usuario;
         this.contraseña=obj.contraseña;
         var cuentos =[];
         $.each(obj.cuentos, function (i, emp) {
             var cuentoTraido= new Cuento();
+            console.log("cuneto"+emp);
             cuentoTraido.constructorObj(emp);
             cuentos.push(cuentoTraido);
         });
         this.cuentos=cuentos;
+        
+        
+        console.log("entrro.........................."+cuentos);
     }
 }
 
@@ -56,6 +65,7 @@ class Cuento {
             imagenes1.push(iT);*/
              imagenes1.push(emp);
         });
+        console.log("aqui hay un error"+imagenes1);
         this.imagenes = imagenes1;
         var audios1= [];
          $.each(obj.audios, function (i, emp) {
@@ -63,18 +73,46 @@ class Cuento {
             audios1.push(emp);
         });           
         this.audios= audios1;
-  
+        var preg=[];
+        $.each(obj.preguntas, function (i, emp) {
+            /*var iT= new Imagenes();
+             alert(obj.imagenes[0].src);
+           iT.constructor(emp);
+             console.log("imagen"+emp);
+            imagenes1.push(iT);*/
+             preg.push(emp);
+        });
+        this.pregunta=preg;
+        
+        
+        
+        
+        console.log("audio"+audios1[0].src);
+        
+        console.log(imagenes1);
+    console.log(audios1);
     }
     
     
-     constru(titulo,descripcion,credito,imagenes,audios){            
+     constru(titulo,descripcion,credito,imagenes,audios,preguntas){            
         this.titulo = titulo;        
         this.descripcion = descripcion;
         this.creditos = credito;       
         this.imagenes = imagenes;
         this.audios= audios;
+         this.preguntas=preguntas;
     }
     
+}
+
+class Pregunta{
+    constru(pregunta,imagens,respuesta){
+        console.log("aqui va1111"+respuesta);
+        this.pregunta=pregunta;
+        this.imagens=imagens;
+        this.respuesta=respuesta;
+        console.log("aqui va"+respuesta);
+    }
 }
 
 
@@ -86,6 +124,7 @@ function crearCuento() {
     var cre = $('input:text[name=fcreditos]').val();
   
     var cuent = new Cuento(title,des,cre,cuentosIm,cuentosAu);
+    console.log("aquiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"+cuent.nombre);
     return cuent;
     
 }
@@ -97,7 +136,11 @@ $(document).ready(function () {
     //  cuentosPorDefault();
     cargar();
 
-
+  ActivarDroppablePreguntas();
+    
+    
+    //Ocultamos el contenedor de preguntas
+    $(".contPreguntas").hide();
 
     $(".NuevaHoja").click(function () {
         var Thtml = "<div class='item'>\
@@ -113,6 +156,7 @@ $(document).ready(function () {
         hoja++;
         cargar();
         ActivarDroppableAudio();
+      
 
     });
     $(".button2").click(function () {
@@ -122,19 +166,48 @@ $(document).ready(function () {
     });
     
       $(".button3").click(function () {
-
-        leer();
+          $(".contPreguntas").show();
+          alert("Dirijase hacia la parte inferior de la pagina");
+        
 
     });
-
-
-
-    $/*(".hojas img").each(function () {
-        AgrImg = ($(this).attr('src'));
-        cuentosIm.push(AgrImg);
-        console.log(cuentosIm);
+    
+    $("#btnG").click(function () {
+        
+        var pre1 = $('input:text[name=preg1]').val();
+         var pre2 = $('input:text[name=preg2]').val();
+        var resp1 = $('input:text[name=resp1]').val();
+         var resp2 = $('input:text[name=resp2]').val();
+        console.log(pre1+pre2+resp1+resp2);
+        
+        $(".preg1 img").each(function () {
+            AgrImg = ($(this).attr('src'));
+            item = {};
+            item["src"] = AgrImg;
+            ImPreguntas.push(item);
+        });
+        
+        $(".preg2 img").each(function () {
+            AgrImg = ($(this).attr('src'));
+            item = {};
+            item["src"] = AgrImg;
+            ImPreguntas2.push(item);
+        });
+        
+        var pregunta1= new Pregunta();
+        pregunta1.constru(pre1,ImPreguntas,resp1);
+         var pregunta2= new Pregunta();
+        pregunta2.constru(pre2,ImPreguntas2,resp2);
+        ArrPreg.push(pregunta1);
+        ArrPreg.push(pregunta2);
+        var cue = JSON.stringify(ArrPreg);
+        console.log(ImPreguntas);
+        console.log(ImPreguntas2);
+        console.log(cue);
+        
+           
     });
-*/
+
 
     $("#boton").click(function () {
         var cue = "";
@@ -163,14 +236,18 @@ $(document).ready(function () {
         var title = $('input:text[name=fname]').val();
         var des = $('input:text[name=fdescripcion]').val();
         var cre = $('input:text[name=fcreditos]').val();
-  
+        guardarPreguntas();
     
-        cuento2.constru(title,des,cre,cuentosIm,cuentosAu);
+        cuento2.constru(title,des,cre,cuentosIm,cuentosAu,ArrPreg);
         
         
         usuarios[0].cuentos.push(cuento2);
+        console.log("aqui pase un rato xxx2");
+         console.log("aqui va el cuento"+cuento2);
         var cue = JSON.stringify(usuarios);
         console.log(cue);
+        console.log(cuentosAu);
+        console.log(cuentosIm);
         $.ajax({
             url: '../php/writeJson.php',
             method: 'post',
@@ -242,6 +319,7 @@ $(document).ready(function () {
                    
                     $(".showImages").append("<img id='draggable' src='../imagenes/historias/" + data + "' />");
                     cargar();
+                      ActivarDroppablePreguntas();
                 }
             },
             //si ha ocurrido un error
@@ -405,6 +483,60 @@ function ActivarDroppableAudio() {
 
         }
     });
+}
+
+
+function ActivarDroppablePreguntas() {
+    $("[id^=draggable]").draggable({
+        revert: true
+    });
+    $("[id^=ImP]").droppable({
+        drop: function (event, ui) {
+            alert("encontro");
+             agregar = $(ui.draggable).attr('src');
+            idA = $(this).attr("id");
+            $("#" + idA + "").empty(); // vaciar los contenedores en el caso que este lleno
+            
+                 
+            $("#" + idA + "").append("<img src=" + agregar + ">"); //agrego la imagen a la pagina en miniatura.
+
+        }
+    });
+}
+
+
+function guardarPreguntas(){
+     
+        var pre1 = $('input:text[name=preg1]').val();
+         var pre2 = $('input:text[name=preg2]').val();
+        var resp1 = $('input:text[name=resp1]').val();
+         var resp2 = $('input:text[name=resp2]').val();
+        console.log(pre1+pre2+resp1+resp2);
+        
+        $(".preg1 img").each(function () {
+            AgrImg = ($(this).attr('src'));
+            item = {};
+            item["src"] = AgrImg;
+            ImPreguntas.push(item);
+        });
+        
+        $(".preg2 img").each(function () {
+            AgrImg = ($(this).attr('src'));
+            item = {};
+            item["src"] = AgrImg;
+            ImPreguntas2.push(item);
+        });
+        
+        var pregunta1= new Pregunta();
+        pregunta1.constru(pre1,ImPreguntas,resp1);
+         var pregunta2= new Pregunta();
+        pregunta2.constru(pre2,ImPreguntas2,resp2);
+        ArrPreg.push(pregunta1);
+        ArrPreg.push(pregunta2);
+        var cue = JSON.stringify(ArrPreg);
+        console.log(ImPreguntas);
+        console.log(ImPreguntas2);
+        console.log(cue);
 }
 
 

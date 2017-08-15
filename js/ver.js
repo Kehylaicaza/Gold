@@ -8,7 +8,7 @@ $(document).ready(function () {
         for (let objeto of data) {
             for (let cuento of objeto.cuentos) {
                 let aux = new Cuento();
-                aux.constru(cuento.titulo, cuento.descripcion, cuento.credito, cuento.imagenes, cuento.audios)
+                aux.constru(cuento.titulo, cuento.descripcion, cuento.credito, cuento.imagenes, cuento.audios, cuento.preguntas);
 
                 arrayCuentos.push(aux);
 
@@ -24,7 +24,7 @@ $(document).ready(function () {
             console.log("hola soy un cuento" + arrayCuentos);
             if (value.imagenes.length != null) {
                 $("#principal").append('<li><a id=' + a.toString() + '><div class="col-lg-4"><img class="imagenesCuentos"  src=' + value.imagenes[0].src + '>' + value.titulo + '</div></a></li>');
-                  
+
                 a++;
             }
 
@@ -78,25 +78,34 @@ $(document).ready(function () {
         $(".col-lg-10").empty();
         $(".col-lg-10").append('<img   alt=" " class="img-responsive" src="' + arrayCuentos[v].imagenes[0].src + '  ">');
         controladorImagenes = 0;
+        $("#au").append("<audio controls><source src='" + arrayCuentos[v].audios[0].src + "' type='audio/mpeg'></audio>");
     });
 
 
     $("#siguiente").click(function () {
         controladorImagenes = controladorImagenes + 1;
+        alert(controladorImagenes);
+        var cont = 0;
 
         if (controladorImagenes < arrayCuentos[v].imagenes.length) { //va a la imagen siguiente 
-
+            console.log("nooooooo");
             $(".col-lg-10").empty(); //elimina todos los nodos que tenga
             $(".col-lg-10").append('<img   alt=" " class="img-responsive" src="' + arrayCuentos[v].imagenes[controladorImagenes].src + '  ">');
-             $("#au").append('<source src="'+value.audios[0].src+ '" type="audio/wma"></source>');
+            console.log("por aqui paso");
+            console.log(arrayCuentos[v].audios[0].src);
+            $("#au").empty();
+            $("#au").append("<audio controls><source src='" + arrayCuentos[v].audios[controladorImagenes].src + "' type='audio/mpeg'></audio>");
 
+            cont++;
         } else {
             controladorImagenes = controladorImagenes - 1;
             $(".col-lg-10").empty(); //elimina todos los nodos que tenga
-            $(".col-lg-10").append('<img   alt=" " class="img-responsive" src="../imagenes/historias/fin.jpg">');
-
-
-
+            $(".col-lg-10").append('<img   alt=" " class="img-responsive" src="../imagenes/historias/fin.png">');
+            console.log(cont);
+        }
+        if (cont == 1) {
+            $(".col-lg-10").empty(); //elimina todos los nodos que tenga
+            $(".col-lg-10").append('<div class="container"><h1>' + arrayCuentos[v].preguntas[0].pregunta + '</h1><div class="row"><div class="col-lg-3"><a id="o1"><img   alt=" " class="img-responsive" src="' + arrayCuentos[v].preguntas[0].imagens[0].src + '  "></a></div><div class="col-lg-3"><a id="o2"<img   alt=" " class="img-responsive" src="' + arrayCuentos[v].preguntas[0].imagens[1].src + '  "></a></div><div class="col-lg-3"><a id="o3"<img   alt=" " class="img-responsive" src="' + arrayCuentos[v].preguntas[0].imagens[2].src + '  "></a></div></div></div>');
 
         }
     });
@@ -133,6 +142,7 @@ function mostrarCuento(v, arrayCuentos) {
     if (arrayCuentos[v].imagenes[0].src != null) { //si la primera imagen no es igual a null
 
         $(".col-lg-10").append('<img   alt=" " class="img-responsive" src="' + arrayCuentos[v].imagenes[0].src + '  ">');
+        $("#au").append("<audio controls><source src='" + arrayCuentos[v].audios[0].src + "' type='audio/mpeg'></audio>");
 
 
     }
