@@ -126,3 +126,15 @@ input{
     font-size: 30pt;
     float: left;
 }
+
+.HojAud {
+    width: 100%;
+    height: 40px;
+    background-color: #D0A9F5;
+    float: right;
+    text-align: center;
+}
+
+.ContAu h3{   
+   text-align: center;
+}

@@ -1,0 +1,90 @@
+[
+    {"nombre":"yander","usuario":"yan","contraseña":"1234",
+     "cuentos":
+     [
+         {"titulo":"Los cerditos y el lobo feroz","descripcion":"Le tumbaron la casa","credito":"yo lo hice",
+          "imagenes":
+          [
+              {"src":"..\/img\/cuentos\/cerditos1.jpg"},
+              {"src":"..\/img\/cuentos\/cerditos1.jpg"},
+              {"src":"..\/img\/cuentos\/cerditos1.jpg"},
+              {"src":"..\/img\/cuentos\/cerditos1.jpg"},
+              {"src":"..\/img\/cuentos\/cerditos1.jpg"}
+              
+          ],
+          "audios":
+          [
+              {"src":"..\/img\/cuentos\/blancanieves1.mp3"},
+               {"src":"..\/img\/cuentos\/blancanieves1.mp3"},
+               {"src":"..\/img\/cuentos\/blancanieves1.mp3"},
+               {"src":"..\/img\/cuentos\/blancanieves1.mp3"},
+               {"src":"..\/img\/cuentos\/blancanieves1.mp3"}       
+          ]
+         },
+         {"titulo":"otro cuento","descripcion":"blalslalsl","credito":"no molestar",
+          "imagenes":
+          [
+              {"src":"..\/img\/cuentos\/cerditos1.jpg"},
+              {"src":"..\/img\/cuentos\/cerditos1.jpg"},
+              {"src":"..\/img\/cuentos\/cerditos1.jpg"},
+              {"src":"..\/img\/cuentos\/cerditos1.jpg"},
+              {"src":"..\/img\/cuentos\/cerditos1.jpg"}
+              
+          ],
+          "audios":
+          [
+              {"src":"..\/img\/cuentos\/blancanieves1.mp3"},
+               {"src":"..\/img\/cuentos\/blancanieves1.mp3"},
+               {"src":"..\/img\/cuentos\/blancanieves1.mp3"},
+               {"src":"..\/img\/cuentos\/blancanieves1.mp3"},
+               {"src":"..\/img\/cuentos\/blancanieves1.mp3"}       
+          ]
+         }
+        
+     ]
+    },
+{"nombre":"keila","usuario":"yan","contraseña":"1234",
+     "cuentos":
+     [
+         {"titulo":"Los cerditos y el lobo feroz","descripcion":"Le tumbaron la casa","credito":"yo lo hice",
+          "imagenes":
+          [
+              {"src":"..\/img\/cuentos\/cerditos1.jpg"},
+              {"src":"..\/img\/cuentos\/cerditos1.jpg"},
+              {"src":"..\/img\/cuentos\/cerditos1.jpg"},
+              {"src":"..\/img\/cuentos\/cerditos1.jpg"},
+              {"src":"..\/img\/cuentos\/cerditos1.jpg"}
+              
+          ],
+          "audios":
+          [
+              {"src":"..\/img\/cuentos\/blancanieves1.mp3"},
+               {"src":"..\/img\/cuentos\/blancanieves1.mp3"},
+               {"src":"..\/img\/cuentos\/blancanieves1.mp3"},
+               {"src":"..\/img\/cuentos\/blancanieves1.mp3"},
+               {"src":"..\/img\/cuentos\/blancanieves1.mp3"}       
+          ]
+         },
+         {"titulo":"otro cuento","descripcion":"blalslalsl","credito":"no molestar",
+          "imagenes":
+          [
+              {"src":"..\/img\/cuentos\/cerditos1.jpg"},
+              {"src":"..\/img\/cuentos\/cerditos1.jpg"},
+              {"src":"..\/img\/cuentos\/cerditos1.jpg"},
+              {"src":"..\/img\/cuentos\/cerditos1.jpg"},
+              {"src":"..\/img\/cuentos\/cerditos1.jpg"}
+              
+          ],
+          "audios":
+          [
+              {"src":"..\/img\/cuentos\/blancanieves1.mp3"},
+               {"src":"..\/img\/cuentos\/blancanieves1.mp3"},
+               {"src":"..\/img\/cuentos\/blancanieves1.mp3"},
+               {"src":"..\/img\/cuentos\/blancanieves1.mp3"},
+               {"src":"..\/img\/cuentos\/blancanieves1.mp3"}       
+          ]
+         }
+        
+     ]
+    }
+]

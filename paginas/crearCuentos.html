@@ -62,13 +62,13 @@
                                 </div>
                                 <br /><br />
                                 <div class="col-md-4">
-                                    <input type="button" class="AgregarImg " value="Agregarla" /><br />
+                                    <input type="button" class="AgregarImg" value="Agregarla" /><br />
                                 </div>
 
                             </div>
                         </form>
                         <!--div para visualizar mensajes-->
-                        <div class="messages"></div><br /><br />
+                       <br><br><br>
                         <!--div para visualizar en el caso de imagen-->
                         <div class="showImages sizeImAg fondoCont" id="showImages"></div>
 
@@ -167,7 +167,50 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="col-md-12">
+               <div class="col-md-9">
+                <div class="FormAudio ">
+                       <div class="">
+                        <form enctype="multipart/form-data" class="formulario2">
+                            <h2>Agrega tus audios</h2><br/>
+                            <div class="col-md-12">
+                                <div class="col-md-4">
+                                    <input name="archivo" type="file" id="audios" />
 
+                                </div>
+                                <br /><br />
+                                <div class="col-md-4">
+                                    <input type="button" class="AgregarAudio " value="Agregar Audios" /><br />
+                                </div>
+
+                            </div>
+                        </form>
+                        <!--div para visualizar mensajes-->
+                       <br><br><br>
+                        <!--div para visualizar en el caso de imagen-->
+                        <div class="insertAudio sizeImAg fondoCont" id="showImages">
+                            
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ContAudios col-md-3">
+                    <h2>Audios</h2>
+                    <p>Coloca tus audios en el orden correspondiente</p>
+                    <div class="ContAu">
+                        <h3>Audio1</h3><span><div class="HojAud" id="au1"></div></span>
+                         <h3>Audio2</h3><span><div class="HojAud" id="au2"></div></span>
+                          <h3>Audio3</h3><span><div class="HojAud" id="au3"></div></span>
+                           <h3>Audio4</h3><span><div class="HojAud" id="au4"></div></span>
+                    </div>
+                </div>
+                
+                </div>
+                
+                
+            </div>
+            
         </div>
         <!-- /.container -->
 
@@ -191,7 +234,7 @@
         <!-- Bootstrap Core JavaScript -->
         <script src="../js/bootstrap.min.js"></script>
 
-    </div>
+    
 </body>
 
 </html>

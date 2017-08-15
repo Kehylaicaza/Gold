@@ -1,1 +1,39 @@
-{"titulo":"123","descripcion":"","creditos":"","imagenes":[{"src":"../imagenes/historias/b1.jpg"}]}
+[{
+    "nombre": "yander",
+    "usuario": "yan",
+    "cuentos": [ {
+        "titulo": "SIFO PROBANDO",
+        "descripcion": "probando mi codigo",
+        "creditos": "probando NDO...",
+        "imagenes": [{
+            "src": "../imagenes/historias/3.jpg"
+        }],
+        "audios": [{
+            "src": "../imagenes/historias/16.mp3"
+        }]
+    }, {
+        "titulo": "Mi bella Genio",
+        "descripcion": "Capitan Nelson y Genie ",
+        "creditos": "Amiguitos",
+        "imagenes": [{
+            "src": "../imagenes/historias/b1.jpg"
+        }, {
+            "src": "../imagenes/historias/b4.jpg"
+        }, {
+            "src": "../imagenes/historias/b2.jpg"
+        }],
+        "audios": []
+    }, {
+        "titulo": "The promise",
+        "descripcion": "redwewei",
+        "creditos": "redwewei",
+        "imagenes": [{
+            "src": "../imagenes/historias/hechizada.jpg"
+        }],
+        "audios": []
+    }]
+}, {
+    "nombre": "keila",
+    "usuario": "yan",
+    "cuentos": []
+}]

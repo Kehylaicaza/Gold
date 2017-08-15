@@ -1,56 +1,37 @@
 var a = 0;
-var arrayCuentos = [];
 var v;
 var controladorImagenes = 0;
 
-
 $(document).ready(function () {
+    var arrayCuentos = [];
+    $.getJSON('../php/datos.json', function (data) {
+        for (let objeto of data) {
+            for (let cuento of objeto.cuentos) {
+                let aux = new Cuento();
+                aux.constru(cuento.titulo, cuento.descripcion, cuento.credito, cuento.imagenes, cuento.audios)
 
-
-    $.getJSON("../php/datos.json", function (json) {
-        jei = json;
-
-        var titulo;
-        var descripcion;
-        var creditos;
-        var imagenes = [];
-        for (i in jei) {
-            a++;
-            if (i == "titulo") {
-                titulo = jei[i];
-
-            }
-            if (i == "descripcion") {
-                descripcion = jei[i]
-
-            }
-            if (i == "creditos") {
-                creditos = jei[i]
-
-            }
-            if (i == "imagenes") {
-                imagenes = jei[i]
-
-
-            }
-            if (a == 4) {
-                var aux = new Cuento(titulo, descripcion, creditos, imagenes);
-
-                a = 0;
                 arrayCuentos.push(aux);
 
+                exportar(arrayCuentos);
+
             }
         }
-        //presentar todos los cuentos
+
+
+        //mostrar los cuentos
         $("#principal").empty();
         for (let value of arrayCuentos) {
-            if(value.imagenes.length != null){
-            $("#principal").append('<li><a id=' + a.toString() + '><div class="col-lg-4"><img class="imagenesCuentos"  src=' + value.imagenes[0].src + '>' + value.titulo + '</div></a></li>');
-            a++;
+            console.log("hola soy un cuento" + arrayCuentos);
+            if (value.imagenes.length != null) {
+                $("#principal").append('<li><a id=' + a.toString() + '><div class="col-lg-4"><img class="imagenesCuentos"  src=' + value.imagenes[0].src + '>' + value.titulo + '</div></a></li>');
+                a++;
+            }
+
         }
-}
-        exportar(arrayCuentos);
+
     });
+
+
 
 
 
@@ -87,15 +68,15 @@ $(document).ready(function () {
         controladorImagenes = 0;
         modal.style.display = "block";
         v = $(this).attr('id');
-        mostrarCuento(v);
+        mostrarCuento(v, arrayCuentos);
     })
-    
-    
+
+
 
     $("#anterior").click(function () {
-          $(".col-lg-10").empty();
-             $(".col-lg-10").append('<img   alt=" " class="img-responsive" src="' + arrayCuentos[v].imagenes[0].src + '  ">');
-        controladorImagenes =0;
+        $(".col-lg-10").empty();
+        $(".col-lg-10").append('<img   alt=" " class="img-responsive" src="' + arrayCuentos[v].imagenes[0].src + '  ">');
+        controladorImagenes = 0;
     });
 
 
@@ -121,24 +102,26 @@ $(document).ready(function () {
 
 
 
-    //exportar Json para el usuario
+
 
 
 
 
 });
+//exportar Json para el usuario
 
-function exportar(jei) {
-    console.log(jei);
+function exportar(arrayCuentos) {
 
-    var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(jei)); //preparo la data para ser adjuntada al link de exportación
+
+    var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(arrayCuentos)); //preparo la data para ser adjuntada al link de exportación
     $('.exportar').attr('href', 'data:' + data);
     //var slug = string_to_slug(title); //convierto el titulo de la partirura a slug para que el archivo contenga ese nombre
     $('.exportar').attr('download', 'pix-data-cuentos.json'); // indico el nombre con el cual se descargará el archivo
     $('.exportar').trigger('click'); // El trigger() método activa el evento especificado y el comportamiento predeterminado de un evento 
 }
 
-function mostrarCuento(v) {
+function mostrarCuento(v, arrayCuentos) {
+
     $(".col-lg-10").empty(); //elimina todos los nodos que tenga
     $("#nombreCuento").text(arrayCuentos[v].titulo);
     $("#descripcion").text(arrayCuentos[v].descripcion);

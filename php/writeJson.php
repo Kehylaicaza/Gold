@@ -7,7 +7,7 @@ if (isset($data)) {
     fwrite($fp, utf8_decode($data));
     fclose($fp);
     //chmod($file, 0777);
-    echo 'Se han guardado correctamente la información en el txt!';
+    echo 'Se han guardado correctamente la información en el json';
 }
 else {
     echo 'No hay datos que guardar!';
