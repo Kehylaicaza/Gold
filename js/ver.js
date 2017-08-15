@@ -83,6 +83,8 @@ $(document).ready(function () {
 
 
     $("#siguiente").click(function () {
+        $("#au").empty();
+     
         controladorImagenes = controladorImagenes + 1;
         alert(controladorImagenes);
         var cont = 0;
@@ -103,11 +105,33 @@ $(document).ready(function () {
             $(".col-lg-10").append('<img   alt=" " class="img-responsive" src="../imagenes/historias/fin.png">');
             console.log(cont);
         }
-        if (cont == 1) {
+        
+           //preguntas
+        if (controladorImagenes == 1) {
+           
             $(".col-lg-10").empty(); //elimina todos los nodos que tenga
-            $(".col-lg-10").append('<div class="container"><h1>' + arrayCuentos[v].preguntas[0].pregunta + '</h1><div class="row"><div class="col-lg-3"><a id="o1"><img   alt=" " class="img-responsive" src="' + arrayCuentos[v].preguntas[0].imagens[0].src + '  "></a></div><div class="col-lg-3"><a id="o2"<img   alt=" " class="img-responsive" src="' + arrayCuentos[v].preguntas[0].imagens[1].src + '  "></a></div><div class="col-lg-3"><a id="o3"<img   alt=" " class="img-responsive" src="' + arrayCuentos[v].preguntas[0].imagens[2].src + '  "></a></div></div></div>');
+            $("#validacion").append('<div class="container"><h1>' + arrayCuentos[v].preguntas[0].pregunta + '</h1><div class="row"><div class="col-lg-3"><a id="1"><img   alt=" " class="img-responsive" src="' + arrayCuentos[v].preguntas[0].imagens[0].src + '  "></a></div><div class="col-lg-3"><a id="2"><img   alt=" " class="img-responsive" src="' + arrayCuentos[v].preguntas[0].imagens[1].src + '  "></a></div><div class="col-lg-3"><a id="3"><img   alt=" " class="img-responsive" src="' + arrayCuentos[v].preguntas[0].imagens[2].src + '  "></a></div></div></div>');
 
         }
+        
+           if (controladorImagenes == 4) {
+               
+            $(".col-lg-10").empty(); //elimina todos los nodos que tenga
+            $("#validacion").append('<div class="container"><h1>' + arrayCuentos[v].preguntas[1].pregunta + '</h1><div class="row"><div class="col-lg-3"><a id="1"><img   alt=" " class="img-responsive" src="' + arrayCuentos[v].preguntas[1].imagens[0].src + '  "></a></div><div class="col-lg-3"><a id="2"><img   alt=" " class="img-responsive" src="' + arrayCuentos[v].preguntas[1].imagens[1].src + '  "></a></div><div class="col-lg-3"><a id="3"><img   alt=" " class="img-responsive" src="' + arrayCuentos[v].preguntas[1].imagens[2].src + '  "></a></div></div></div>');
+
+        }
+        
+         $('body').on('click', '#validacion a', function () {
+       iden = $(this).attr('id');
+             if(iden == arrayCuentos[v].preguntas[0].respuesta ) {
+                alert("c: Eres genial Respuesta Correcta");
+                }
+             else{
+                 
+                  alert(":c Pum pin pum pin");
+                 }
+    })
+
     });
 
 
